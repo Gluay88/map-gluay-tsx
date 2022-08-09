@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Map from "react-map-gl";
 
-function App() {
+import GeocoderControl from "./geocoder-control.tsx";
+
+const TOKEN =
+  "pk.eyJ1IjoiZ2x1YXkyMCIsImEiOiJjbDZlZDlid3owOTBrM2twaGR1NTU5N3lpIn0.npHpuRhmKKymUvyJp6kF7g";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      style={{
+        width: "100vw",
+        height: "100vh",
+        border: "solid 2px red",
+      }}
+    >
+      <Map
+        initialViewState={{
+          longitude: -71.057083,
+          latitude: 42.361145,
+          zoom: 12,
+        }}
+        mapStyle="mapbox://styles/mapbox/satellite-v9"
+        mapboxAccessToken={TOKEN}
+        style={{ border: "red 3px red" }}
+      >
+        <GeocoderControl mapboxAccessToken={TOKEN} position="top-right" />
+      </Map>
     </div>
   );
-}
+};
 
 export default App;
